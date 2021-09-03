@@ -44,10 +44,11 @@ namespace Denombrements
             while (choix != 0)
             {
                 // affichage du menu 
-                Console.WriteLine("Permutation ...................... 1");
-                Console.WriteLine("Arrangement ...................... 2");
-                Console.WriteLine("Combinaison ...................... 3");
-                Console.WriteLine("Quitter .......................... 0");
+                Console.WriteLine("Permutation .............................. 1");
+                Console.WriteLine("Arrangement .............................. 2");
+                Console.WriteLine("Combinaison .............................. 3");
+                Console.WriteLine("Multiplication d'une suite d'entiers ..... 4");
+                Console.WriteLine("Quitter .................................. 0");
                 Console.Write("Choix :                            ");
                 choix = int.Parse(Console.ReadLine());
 
@@ -81,18 +82,37 @@ namespace Denombrements
                     }
                     else
                     {
-                        // renvoi vers "Combinaison
-                        SaisieT(); // saisie du nombre d'éléments à gérer
-                        SaisieN(); // saisie du nombre d'éléments dans le sous ensemble
-                        // calcul de r1
-                        long r1 = 1;
-                        for (int k = (elements - sousEnsemble + 1); k <= elements; k++)
-                            r1 *= k;
-                        // calcul de r2
-                        long r2 = 1;
-                        for (int k = 1; k <= sousEnsemble; k++)
-                            r2 *= k;
-                        Console.WriteLine("C(" + elements + "/" + sousEnsemble + ") = " + (r1 / r2)); // affichage du resultat
+                        if(choix == 3)
+                        {
+                            // renvoi vers "Combinaison
+                            SaisieT(); // saisie du nombre d'éléments à gérer
+                            SaisieN(); // saisie du nombre d'éléments dans le sous ensemble
+                                       // calcul de r1
+                            long r1 = 1;
+                            for (int k = (elements - sousEnsemble + 1); k <= elements; k++)
+                                r1 *= k;
+                            // calcul de r2
+                            long r2 = 1;
+                            for (int k = 1; k <= sousEnsemble; k++)
+                                r2 *= k;
+                            Console.WriteLine("C(" + elements + "/" + sousEnsemble + ") = " + (r1 / r2)); // affichage du resultat
+                        }
+                        else
+                        {
+                            // renvoi vers "multiplication d'une suite d'entiers
+                            //saisie et récupération de val1
+                            Console.Write("Saisir le premier nombre de la suite à multiplier : "); 
+                            int val1 = int.Parse(Console.ReadLine());
+                            // saisie et récupération de val2
+                            Console.Write("Saisir le dernier nombre de la suite à multiplier : ");
+                            int val2 = int.Parse(Console.ReadLine());
+                            // calcul du résultat
+                            long r = 1;
+                            for (int k = val1; k <= val2; k++)
+                                r *= k;
+                            Console.WriteLine("M(" + val1 + "/" + val2 + ") = " + r);
+                        }
+                        
                     }
                 }
             }
